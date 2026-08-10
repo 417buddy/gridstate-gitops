@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gridstate-api
+  namespace: gridstate
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: gridstate-api }
+  template:
+    metadata:
+      labels: { app: gridstate-api }
+    spec:
+      containers:
+        - name: api
+          image: gridstate-api:0.1.0
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef: { name: gridstate-config }
+          securityContext:
+            runAsNonRoot: true
+          resources:
+            requests: { cpu: "100m", memory: "128Mi" }
+            limits: { cpu: "300m", memory: "256Mi" }
+          readinessProbe:
+            httpGet: { path: /healthz, port: 3000 }
+            initialDelaySeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gridstate-api
+  namespace: gridstate
+spec:
+  selector: { app: gridstate-api }
+  ports:
+    - port: 80
+      targetPort: 3000

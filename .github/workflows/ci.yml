@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build API image
+        run: docker build -t gridstate-api:ci -f api/Dockerfile api
+
+      - name: Build worker image
+        run: docker build -t gridstate-worker:ci -f worker/Dockerfile worker
+
+      - name: Validate Kustomize overlay
+        run: |
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          ./kustomize build k8s/region-a > /tmp/rendered.yaml
+          echo "Rendered manifest:"
+          cat /tmp/rendered.yaml

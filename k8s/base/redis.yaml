@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: gridstate
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: redis }
+  template:
+    metadata:
+      labels: { app: redis }
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.4.1
+          ports:
+            - containerPort: 6379
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "200m", memory: "256Mi" }
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}
+          # Deliberately emptyDir, not a PVC, in this base manifest: this
+          # is the real gap Project 5's Velero work exists to close.
+          # Calling it out here rather than quietly using ephemeral
+          # storage and hoping nobody notices.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: gridstate
+spec:
+  selector: { app: redis }
+  ports:
+    - port: 6379
+      targetPort: 6379

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gridstate-config
+  namespace: gridstate
+data:
+  REDIS_URL: "redis://redis:6379"
+  REGION: "unset"
+  # Overridden per region by the Kustomize overlay in k8s/region-a/,
+  # never edited here directly, this is what keeps the base manifest
+  # honest as the one ArgoCD reconciles against regardless of region.
