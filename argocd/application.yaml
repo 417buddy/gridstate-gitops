@@ -8,7 +8,7 @@ spec:
   # ArgoCD watches THIS repo's k8s/region-a directory. Point source.repoURL
   # at your own fork once this is pushed to Git, see README "Deploy steps".
   source:
-    repoURL: "https://github.com/YOUR_ORG/gridstate.git"
+    repoURL: "https://github.com/417buddy/gridstate.git"
     targetRevision: main
     path: k8s/region-a
   destination:
