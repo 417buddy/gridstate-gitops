@@ -11,7 +11,7 @@ COPY package.json ./
 COPY src ./src
 
 RUN useradd -r -u 10001 gridstate
-USER gridstate
+USER 10001
 
 EXPOSE 3001
 CMD ["node", "src/index.js"]

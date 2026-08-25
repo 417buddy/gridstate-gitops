@@ -3,24 +3,23 @@ kind: Application
 metadata:
   name: gridstate-region-a
   namespace: argocd
+
 spec:
   project: default
-  # ArgoCD watches THIS repo's k8s/region-a directory. Point source.repoURL
-  # at your own fork once this is pushed to Git, see README "Deploy steps".
+
   source:
-    repoURL: "https://github.com/417buddy/gridstate.git"
+    repoURL: "https://github.com/417buddy/gridstate-gitops.git"
     targetRevision: main
     path: k8s/region-a
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gridstate
+
   syncPolicy:
     automated:
-      # selfHeal is the actual point of Project 4: a manual kubectl edit
-      # against the live cluster gets reverted automatically because it
-      # no longer matches what this repo declares, not left as silent,
-      # undocumented drift.
       selfHeal: true
       prune: true
+
     syncOptions:
       - CreateNamespace=false

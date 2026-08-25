@@ -1,0 +1,32 @@
+2026-08-24 14:41:37.3N WAT
+NAME                 SYNC STATUS   HEALTH STATUS
+gridstate-region-a   Synced        Healthy
+NAME                                    READY   STATUS    RESTARTS   AGE    IP           NODE                              NOMINATED NODE   READINESS GATES
+pod/gridstate-api-7cb45598dd-97xqg      1/1     Running   0          42m    10.42.0.9    k3d-gridstate-region-a-agent-0    <none>           <none>
+pod/gridstate-api-7cb45598dd-mt6gv      1/1     Running   0          42m    10.42.2.10   k3d-gridstate-region-a-agent-1    <none>           <none>
+pod/gridstate-worker-759b79dfcf-9pgnw   1/1     Running   0          17m    10.42.0.10   k3d-gridstate-region-a-agent-0    <none>           <none>
+pod/gridstate-worker-759b79dfcf-mvfg7   1/1     Running   0          18m    10.42.1.10   k3d-gridstate-region-a-server-0   <none>           <none>
+pod/redis-7647fbd7b-zsrdb               1/1     Running   0          148m   10.42.0.6    k3d-gridstate-region-a-agent-0    <none>           <none>
+
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE    SELECTOR
+service/gridstate-api      ClusterIP   10.43.182.189   <none>        80/TCP     148m   app=gridstate-api
+service/gridstate-worker   ClusterIP   10.43.204.68    <none>        80/TCP     148m   app=gridstate-worker
+service/redis              ClusterIP   10.43.23.120    <none>        6379/TCP   148m   app=redis
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS   IMAGES                   SELECTOR
+deployment.apps/gridstate-api      2/2     2            2           148m   api          gridstate-api:0.1.0      app=gridstate-api
+deployment.apps/gridstate-worker   2/2     2            2           148m   worker       gridstate-worker:0.1.0   app=gridstate-worker
+deployment.apps/redis              1/1     1            1           148m   redis        redis:7.4.1              app=redis
+
+NAME                                          DESIRED   CURRENT   READY   AGE    CONTAINERS   IMAGES                   SELECTOR
+replicaset.apps/gridstate-api-7cb45598dd      2         2         2       42m    api          gridstate-api:0.1.0      app=gridstate-api,pod-template-hash=7cb45598dd
+replicaset.apps/gridstate-api-8765dcff9       0         0         0       148m   api          gridstate-api:0.1.0      app=gridstate-api,pod-template-hash=8765dcff9
+replicaset.apps/gridstate-worker-6575474cf7   0         0         0       148m   worker       gridstate-worker:0.1.0   app=gridstate-worker,pod-template-hash=6575474cf7
+replicaset.apps/gridstate-worker-759b79dfcf   2         2         2       18m    worker       gridstate-worker:0.1.0   app=gridstate-worker,pod-template-hash=759b79dfcf
+replicaset.apps/gridstate-worker-899b4c64c    0         0         0       34m    worker       gridstate-worker:0.1.0   app=gridstate-worker,pod-template-hash=899b4c64c
+replicaset.apps/gridstate-worker-dd4f7754b    0         0         0       42m    worker       gridstate-worker:0.1.0   app=gridstate-worker,pod-template-hash=dd4f7754b
+replicaset.apps/redis-7647fbd7b               1         1         1       148m   redis        redis:7.4.1              app=redis,pod-template-hash=7647fbd7b
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+gridstate-api      2/2     2            2           148m
+gridstate-worker   2/2     2            2           148m
+redis              1/1     1            1           148m
