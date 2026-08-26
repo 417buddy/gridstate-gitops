@@ -1,0 +1,38 @@
+===== GITOPS BASELINE =====
+Timestamp: 2026-08-25 12:43:54.3N WAT
+
+===== GIT COMMIT =====
+656b7539f39f216fab40617b366866c7cf864db3
+
+===== ARGOCD APPLICATION =====
+NAME                 SYNC STATUS   HEALTH STATUS
+gridstate-region-a   Synced        Healthy
+
+===== ARGOCD APPLICATION STATUS =====
+sync=Synced
+health=Healthy
+reconciledAt=2026-08-25T11:41:56Z
+
+===== MANAGED RESOURCES =====
+ConfigMap	gridstate	gridstate-config	Synced	
+Namespace		gridstate	Synced	
+Service	gridstate	gridstate-api	Synced	
+Service	gridstate	gridstate-worker	Synced	
+Service	gridstate	redis	Synced	
+Deployment	gridstate	gridstate-api	Synced	
+Deployment	gridstate	gridstate-worker	Synced	
+Deployment	gridstate	redis	Synced	
+
+===== LIVE DEPLOYMENT REPLICAS =====
+NAME               DESIRED   AVAILABLE
+gridstate-api      2         2
+gridstate-worker   2         2
+redis              1         1
+
+===== API STATUS =====
+NAME                                READY   STATUS    RESTARTS      AGE   IP           NODE                              NOMINATED NODE   READINESS GATES
+gridstate-api-7cb45598dd-97xqg      1/1     Running   1 (18h ago)   22h   10.42.0.28   k3d-gridstate-region-a-agent-0    <none>           <none>
+gridstate-api-7cb45598dd-mt6gv      1/1     Running   2             22h   10.42.2.45   k3d-gridstate-region-a-agent-1    <none>           <none>
+gridstate-worker-759b79dfcf-9pgnw   1/1     Running   1 (18h ago)   22h   10.42.0.29   k3d-gridstate-region-a-agent-0    <none>           <none>
+gridstate-worker-759b79dfcf-mvfg7   1/1     Running   5 (18h ago)   22h   10.42.1.42   k3d-gridstate-region-a-server-0   <none>           <none>
+redis-7647fbd7b-zsrdb               1/1     Running   1 (18h ago)   24h   10.42.0.32   k3d-gridstate-region-a-agent-0    <none>           <none>

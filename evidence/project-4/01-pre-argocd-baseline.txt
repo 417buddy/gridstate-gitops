@@ -1,0 +1,50 @@
+===== BASELINE TIMESTAMP =====
+2026-08-25 12:35:48.3N WAT
+
+===== KUBERNETES CONTEXT =====
+k3d-gridstate-region-a
+
+===== DEPLOYMENTS =====
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                   SELECTOR
+gridstate-api      2/2     2            2           24h   api          gridstate-api:0.1.0      app=gridstate-api
+gridstate-worker   2/2     2            2           24h   worker       gridstate-worker:0.1.0   app=gridstate-worker
+redis              1/1     1            1           24h   redis        redis:7.4.1              app=redis
+
+===== PODS =====
+NAME                                READY   STATUS    RESTARTS      AGE   IP           NODE                              NOMINATED NODE   READINESS GATES
+gridstate-api-7cb45598dd-97xqg      1/1     Running   1 (17h ago)   22h   10.42.0.28   k3d-gridstate-region-a-agent-0    <none>           <none>
+gridstate-api-7cb45598dd-mt6gv      1/1     Running   2             22h   10.42.2.45   k3d-gridstate-region-a-agent-1    <none>           <none>
+gridstate-worker-759b79dfcf-9pgnw   1/1     Running   1 (17h ago)   22h   10.42.0.29   k3d-gridstate-region-a-agent-0    <none>           <none>
+gridstate-worker-759b79dfcf-mvfg7   1/1     Running   5 (17h ago)   22h   10.42.1.42   k3d-gridstate-region-a-server-0   <none>           <none>
+redis-7647fbd7b-zsrdb               1/1     Running   1 (17h ago)   24h   10.42.0.32   k3d-gridstate-region-a-agent-0    <none>           <none>
+
+===== SERVICES =====
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+gridstate-api      ClusterIP   10.43.182.189   <none>        80/TCP     24h
+gridstate-worker   ClusterIP   10.43.204.68    <none>        80/TCP     24h
+redis              ClusterIP   10.43.23.120    <none>        6379/TCP   24h
+
+===== CONFIGMAP =====
+apiVersion: v1
+data:
+  REDIS_URL: redis://redis:6379
+  REGION: region-a
+kind: ConfigMap
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: gridstate-region-a:/ConfigMap:gridstate/gridstate-config
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"REDIS_URL":"redis://redis:6379","REGION":"region-a"},"kind":"ConfigMap","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"gridstate-region-a:/ConfigMap:gridstate/gridstate-config"},"name":"gridstate-config","namespace":"gridstate"}}
+  creationTimestamp: "2026-08-24T11:12:41Z"
+  name: gridstate-config
+  namespace: gridstate
+  resourceVersion: "26717"
+  uid: 607fe0ce-9986-4a66-9467-1977000c86a6
+
+===== GIT REVISION =====
+656b7539f39f216fab40617b366866c7cf864db3
+
+===== GIT STATUS =====
+?? .DS_Store
+?? evidence/project-4/01-pre-argocd-baseline.txt
+?? k8s/.DS_Store

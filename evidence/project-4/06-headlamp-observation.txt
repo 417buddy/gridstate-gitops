@@ -1,0 +1,32 @@
+GridState Project 4 — Headlamp Drift Observation
+
+Cluster:
+k3d-gridstate-region-a
+
+Namespace:
+gridstate
+
+Resource observed:
+Deployment/gridstate-worker
+
+Baseline observed in Headlamp:
+Desired replicas: 2
+
+Deliberate live drift:
+kubectl scale deployment gridstate-worker -n gridstate --replicas=4
+
+Observation in Headlamp:
+The live Deployment changed away from the Git-declared replica count.
+
+Auto-remediation observed:
+ArgoCD reconciliation restored the Deployment to 2 replicas without a manual corrective kubectl command.
+
+Final state observed in Headlamp:
+Desired replicas: 2
+Ready replicas: 2
+
+ArgoCD Application final state:
+gridstate-region-a   Synced   Healthy
+
+Observation conclusion:
+Headlamp provided a visual GUI view of the workload changing and returning to the Git-declared desired state.

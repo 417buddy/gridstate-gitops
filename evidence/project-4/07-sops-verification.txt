@@ -1,0 +1,14 @@
+===== SOPS SECRET VERIFICATION =====
+Date: Wed Aug 26 12:01:15 WAT 2026
+
+Local SOPS decryption:
+DECRYPTION EXIT CODE: 0
+
+Encrypted values present in Git file:
+2
+
+Private key tracked by Git:
+NONE
+
+Private key found in Git history:
+NONE

@@ -2,3 +2,30 @@ node_modules
 .env
 *.log
 key.txt
+.DS_Store
+
+# SOPS / age private keys
+key.txt
+*.agekey
+keys.txt
+.sops-key.txt
+
+# Local macOS files
+.DS_Store
+
+# SOPS / age private keys
+key.txt
+*.agekey
+age/keys.txt
+keys.txt
+
+# macOS metadata
+.DS_Store
+
+# macOS
+.DS_Store
+
+# SOPS / age private identities
+key.txt
+*.agekey
+keys.txt

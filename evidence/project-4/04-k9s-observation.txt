@@ -1,0 +1,36 @@
+GridState Project 4 — k9s Drift Observation
+
+Cluster context:
+k3d-gridstate-region-a
+
+Namespace:
+gridstate
+
+Observed resource:
+Deployment/gridstate-api
+
+Baseline:
+gridstate-api was running with 2 desired, 2 ready, and 2 available replicas.
+
+Deliberate drift:
+The deployment was manually scaled directly against the live cluster:
+
+kubectl scale deployment gridstate-api -n gridstate --replicas=5
+
+Observation:
+The deployment entered a drifted state with desired replicas set to 5.
+The immediate kubectl observation showed 2/5 while additional replicas were being reconciled.
+
+Auto-remediation:
+ArgoCD selfHeal restored the deployment specification to the Git-declared value of 2 replicas.
+
+Final k9s observation:
+gridstate-api      2/2 ready
+gridstate-worker   2/2 ready
+redis              1/1 ready
+
+Measured correction time:
+64291 ms
+
+Conclusion:
+k9s was useful for quickly observing workload-level state and the final restoration of the deployment without leaving the terminal.

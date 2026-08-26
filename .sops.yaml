@@ -1,9 +1,4 @@
 creation_rules:
-  # In real use, replace this with your own age or GPG public key,
-  # generated via `age-keygen` (free, open source). This is what makes
-  # it safe for ArgoCD to watch a repo that also contains secrets: SOPS
-  # encrypts the VALUES, not the structure, so the encrypted file is
-  # still a valid, diffable, reviewable Kubernetes manifest in Git.
   - path_regex: k8s/.*secret.*\.yaml$
     encrypted_regex: ^(data|stringData)$
-    age: age1x5lyfs7pr09dm7nsk42f6ugzk7pvgy4x7n0xegk3sq3jlfw99v4szde2g9
+    age: age19kp0xjmqgaygghug04pdgwkf0esryatyysjqec89ctvwwjyvvsxsw06phv

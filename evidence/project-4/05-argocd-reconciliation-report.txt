@@ -1,0 +1,43 @@
+===== ARGOCD RECONCILIATION REPORT =====
+Captured: 2026-08-25 13:15:46 WAT
+
+===== APPLICATION =====
+NAME                 SYNC STATUS   HEALTH STATUS
+gridstate-region-a   Synced        Healthy
+
+===== HISTORY =====
+ID=0 Revision=84ac12151e491b8fb540099768507cd33cb44449 DeployedAt=2026-08-24T11:12:42Z
+ID=1 Revision=8b59796e5d4e9b5c7f4bc0e6e6f6d9f26934e92b DeployedAt=2026-08-24T14:40:16Z
+ID=2 Revision=656b7539f39f216fab40617b366866c7cf864db3 DeployedAt=2026-08-25T11:56:15Z
+
+===== LAST OPERATION =====
+Phase=Succeeded
+Started=2026-08-25T11:56:14Z
+Finished=2026-08-25T11:56:15Z
+Message=successfully synced (all tasks run)
+
+===== CONTROLLER LOGS =====
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Refreshing app status (comparison expired, requesting refresh. reconciledAt: 2026-08-25 11:56:16 +0000 UTC, expiry: 2m0s), level (2)","project":"default","time":"2026-08-25T12:01:36Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Comparing app state (cluster: https://kubernetes.default.svc, namespace: gridstate)","project":"default","time":"2026-08-25T12:01:36Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","build_options_ms":0,"level":"info","manifests_ms":2037,"msg":"GetRepoObjs stats","plugins_ms":0,"project":"default","repo_ms":0,"time":"2026-08-25T12:01:38Z","time_ms":2038}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Skipping auto-sync: application status is Synced","project":"default","time":"2026-08-25T12:01:38Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Update successful","project":"default","time":"2026-08-25T12:01:38Z"}
+{"app-namespace":"argocd","app_status_update_ms":0,"application":"gridstate-region-a","auto_sync_ms":0,"compare_app_state_ms":2107,"comparison-level":2,"comparison_with_nothing_ms":0,"dedup_ms":0,"dest-name":"","dest-namespace":"gridstate","dest-server":"https://kubernetes.default.svc","diff_ms":52,"git_ms":2041,"health_ms":0,"level":"info","live_ms":5,"msg":"Reconciliation completed","normalize_application_ms":3,"patch_ms":33,"persist_app_status_ms":33,"process_finalizers_ms":0,"project":"default","refresh_app_conditions_ms":1,"set_app_managed_resources_ms":15,"setop_ms":0,"settings_ms":6,"sync_ms":0,"time":"2026-08-25T12:01:38Z","time_ms":2161}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Refreshing app status (comparison expired, requesting refresh. reconciledAt: 2026-08-25 12:01:36 +0000 UTC, expiry: 2m0s), level (2)","project":"default","time":"2026-08-25T12:05:06Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Comparing app state (cluster: https://kubernetes.default.svc, namespace: gridstate)","project":"default","time":"2026-08-25T12:05:06Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","build_options_ms":0,"level":"info","manifests_ms":1029,"msg":"GetRepoObjs stats","plugins_ms":0,"project":"default","repo_ms":0,"time":"2026-08-25T12:05:07Z","time_ms":1029}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Skipping auto-sync: application status is Synced","project":"default","time":"2026-08-25T12:05:07Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Update successful","project":"default","time":"2026-08-25T12:05:07Z"}
+{"app-namespace":"argocd","app_status_update_ms":0,"application":"gridstate-region-a","auto_sync_ms":0,"compare_app_state_ms":1067,"comparison-level":2,"comparison_with_nothing_ms":0,"dedup_ms":0,"dest-name":"","dest-namespace":"gridstate","dest-server":"https://kubernetes.default.svc","diff_ms":30,"git_ms":1031,"health_ms":0,"level":"info","live_ms":1,"msg":"Reconciliation completed","normalize_application_ms":1,"patch_ms":31,"persist_app_status_ms":31,"process_finalizers_ms":0,"project":"default","refresh_app_conditions_ms":0,"set_app_managed_resources_ms":8,"setop_ms":0,"settings_ms":2,"sync_ms":0,"time":"2026-08-25T12:05:07Z","time_ms":1109}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Refreshing app status (comparison expired, requesting refresh. reconciledAt: 2026-08-25 12:05:06 +0000 UTC, expiry: 2m0s), level (2)","project":"default","time":"2026-08-25T12:09:04Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Comparing app state (cluster: https://kubernetes.default.svc, namespace: gridstate)","project":"default","time":"2026-08-25T12:09:04Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","build_options_ms":0,"level":"info","manifests_ms":832,"msg":"GetRepoObjs stats","plugins_ms":0,"project":"default","repo_ms":1,"time":"2026-08-25T12:09:05Z","time_ms":836}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Skipping auto-sync: application status is Synced","project":"default","time":"2026-08-25T12:09:05Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Update successful","project":"default","time":"2026-08-25T12:09:05Z"}
+{"app-namespace":"argocd","app_status_update_ms":0,"application":"gridstate-region-a","auto_sync_ms":0,"compare_app_state_ms":883,"comparison-level":2,"comparison_with_nothing_ms":0,"dedup_ms":1,"dest-name":"","dest-namespace":"gridstate","dest-server":"https://kubernetes.default.svc","diff_ms":27,"git_ms":840,"health_ms":0,"level":"info","live_ms":3,"msg":"Reconciliation completed","normalize_application_ms":1,"patch_ms":44,"persist_app_status_ms":44,"process_finalizers_ms":0,"project":"default","refresh_app_conditions_ms":1,"set_app_managed_resources_ms":4,"setop_ms":0,"settings_ms":10,"sync_ms":0,"time":"2026-08-25T12:09:05Z","time_ms":934}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Refreshing app status (comparison expired, requesting refresh. reconciledAt: 2026-08-25 12:09:04 +0000 UTC, expiry: 2m0s), level (2)","project":"default","time":"2026-08-25T12:13:18Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Comparing app state (cluster: https://kubernetes.default.svc, namespace: gridstate)","project":"default","time":"2026-08-25T12:13:18Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","build_options_ms":0,"level":"info","manifests_ms":9453,"msg":"GetRepoObjs stats","plugins_ms":0,"project":"default","repo_ms":0,"time":"2026-08-25T12:13:27Z","time_ms":9455}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Skipping auto-sync: application status is Synced","project":"default","time":"2026-08-25T12:13:28Z"}
+{"app-namespace":"argocd","application":"gridstate-region-a","level":"info","msg":"Update successful","project":"default","time":"2026-08-25T12:13:28Z"}
+{"app-namespace":"argocd","app_status_update_ms":0,"application":"gridstate-region-a","auto_sync_ms":0,"compare_app_state_ms":9498,"comparison-level":2,"comparison_with_nothing_ms":0,"dedup_ms":0,"dest-name":"","dest-namespace":"gridstate","dest-server":"https://kubernetes.default.svc","diff_ms":25,"git_ms":9457,"health_ms":0,"level":"info","live_ms":1,"msg":"Reconciliation completed","normalize_application_ms":0,"patch_ms":22,"persist_app_status_ms":22,"process_finalizers_ms":0,"project":"default","refresh_app_conditions_ms":3,"set_app_managed_resources_ms":8,"setop_ms":0,"settings_ms":12,"sync_ms":0,"time":"2026-08-25T12:13:28Z","time_ms":9534}

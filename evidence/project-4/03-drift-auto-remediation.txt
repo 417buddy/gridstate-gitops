@@ -1,0 +1,19 @@
+===== DELIBERATE DRIFT AND AUTO-REMEDIATION =====
+Drift action: kubectl scale deployment/gridstate-api --replicas=5
+Git desired replicas: 2
+Measured correction time: 64291 ms
+
+===== FINAL APPLICATION STATUS =====
+NAME                 SYNC STATUS   HEALTH STATUS
+gridstate-region-a   Synced        Healthy
+
+===== FINAL DEPLOYMENT STATE =====
+NAME            READY   UP-TO-DATE   AVAILABLE   AGE
+gridstate-api   2/2     2            2           24h
+
+===== POD STATE =====
+NAME                             READY   STATUS    RESTARTS      AGE   IP           NODE                             NOMINATED NODE   READINESS GATES
+gridstate-api-7cb45598dd-97xqg   1/1     Running   1 (18h ago)   23h   10.42.0.28   k3d-gridstate-region-a-agent-0   <none>           <none>
+gridstate-api-7cb45598dd-mt6gv   1/1     Running   2             23h   10.42.2.45   k3d-gridstate-region-a-agent-1   <none>           <none>
+
+===== APPLICATION CONDITIONS =====
