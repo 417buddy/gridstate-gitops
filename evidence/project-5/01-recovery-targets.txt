@@ -1,22 +1,64 @@
-GridState Project 5 — Recovery Targets
+GRIDSTATE PROJECT 5 — RECOVERY TARGETS
 
-Date established: 2026-09-01
+Project:
+DevOps Project 5 — Full Region Evacuation Drill
 
-RTO TARGET
-Maximum acceptable recovery time: 10 minutes
+Product:
+GridState
+
+Target Date:
+2026-09-01
+
+PRIMARY REGION:
+region-a
+
+FAILOVER REGION:
+region-b
+
+RTO TARGET:
+10 minutes
 
 Definition:
-Time from confirmed Region A failure to successful
-GridState job processing in Region B.
+Maximum acceptable elapsed time from confirmed region-a
+failure to region-b successfully accepting and processing
+GridState jobs.
 
-RPO TARGET
-Maximum acceptable data loss window: 1 minute
+RPO TARGET:
+5 minutes
 
 Definition:
-Maximum amount of successfully committed GridState
-state that may be lost following Region A failure.
+Maximum acceptable amount of committed GridState state/jobs
+that may be lost between the latest successful Velero backup
+and the region-a failure.
+
+RECOVERY OBJECTIVE:
+Region-b must operate GridState independently of region-a.
+
+BACKUP OBJECTIVE:
+Redis state must be captured by Velero and subsequently
+restored and verified.
 
 IMPORTANT:
-These targets were established BEFORE the Region A
-chaos experiment and must not be changed based on the
-eventual drill outcome.
+These recovery targets are established BEFORE the Project 5
+chaos experiment. They must not be changed after observing
+the drill results.
+
+RTO MEASUREMENT:
+T0 = confirmed region-a service failure
+T1 = region-b successfully accepting/processing jobs
+
+RTO = T1 - T0
+
+RPO MEASUREMENT:
+Tbackup = timestamp of latest successful backup containing
+the verified Redis/application state
+
+Tfailure = timestamp of region-a failure
+
+RPO = Tfailure - Tbackup
+
+FINAL RESULT:
+To be populated after the actual drill.
+
+STATUS:
+RECOVERY TARGETS ESTABLISHED — PRE-DRILL
