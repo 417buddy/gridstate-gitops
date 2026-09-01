@@ -1,0 +1,22 @@
+GridState Project 5 — Recovery Targets
+
+Date established: 2026-09-01
+
+RTO TARGET
+Maximum acceptable recovery time: 10 minutes
+
+Definition:
+Time from confirmed Region A failure to successful
+GridState job processing in Region B.
+
+RPO TARGET
+Maximum acceptable data loss window: 1 minute
+
+Definition:
+Maximum amount of successfully committed GridState
+state that may be lost following Region A failure.
+
+IMPORTANT:
+These targets were established BEFORE the Region A
+chaos experiment and must not be changed based on the
+eventual drill outcome.
