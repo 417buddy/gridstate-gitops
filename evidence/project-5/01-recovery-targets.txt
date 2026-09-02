@@ -1,64 +1,43 @@
-GRIDSTATE PROJECT 5 — RECOVERY TARGETS
+GridState Project 5 — Recovery Targets
+========================================
 
-Project:
-DevOps Project 5 — Full Region Evacuation Drill
+Drill objective:
+Validate full Region A evacuation and recovery into Region B
+with measurable Recovery Time Objective (RTO) and Recovery Point
+Objective (RPO).
 
-Product:
-GridState
-
-Target Date:
-2026-09-01
-
-PRIMARY REGION:
-region-a
-
-FAILOVER REGION:
-region-b
-
-RTO TARGET:
-10 minutes
+RTO TARGET
+----------
+Target: <= 10 minutes
 
 Definition:
-Maximum acceptable elapsed time from confirmed region-a
-failure to region-b successfully accepting and processing
-GridState jobs.
+Elapsed time from confirmed Region A failure (T0) until Region B
+successfully accepts and processes a real validation workload (T1).
 
-RPO TARGET:
-5 minutes
+RPO TARGET
+----------
+Target: <= 5 minutes
 
 Definition:
-Maximum acceptable amount of committed GridState state/jobs
-that may be lost between the latest successful Velero backup
-and the region-a failure.
+Maximum acceptable amount of GridState state/workload that may be
+lost between the latest successful verified backup timestamp and
+the confirmed Region A failure timestamp.
 
-RECOVERY OBJECTIVE:
-Region-b must operate GridState independently of region-a.
+PRE-DRILL REQUIREMENTS
+----------------------
+1. Region A healthy.
+2. Region B healthy.
+3. Region B Redis persistent.
+4. Region A Redis persistent.
+5. Velero installed and operational.
+6. Backup Storage Location verified.
+7. At least one successful verified backup.
+8. At least one successful restore test.
+9. Uptime Kuma available for timestamped monitoring.
+10. Chaos experiment must not begin until backup/restore validation passes.
 
-BACKUP OBJECTIVE:
-Redis state must be captured by Velero and subsequently
-restored and verified.
+RTO/RPO measurement will use actual timestamps recorded during the
+drill. No estimated or simulated values will be used.
 
-IMPORTANT:
-These recovery targets are established BEFORE the Project 5
-chaos experiment. They must not be changed after observing
-the drill results.
-
-RTO MEASUREMENT:
-T0 = confirmed region-a service failure
-T1 = region-b successfully accepting/processing jobs
-
-RTO = T1 - T0
-
-RPO MEASUREMENT:
-Tbackup = timestamp of latest successful backup containing
-the verified Redis/application state
-
-Tfailure = timestamp of region-a failure
-
-RPO = Tfailure - Tbackup
-
-FINAL RESULT:
-To be populated after the actual drill.
-
-STATUS:
-RECOVERY TARGETS ESTABLISHED — PRE-DRILL
+Status:
+PRE-DRILL / TARGETS ESTABLISHED
