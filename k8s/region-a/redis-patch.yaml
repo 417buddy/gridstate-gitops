@@ -4,3 +4,19 @@
     name: data
     persistentVolumeClaim:
       claimName: redis-data
+- op: add
+  path: /spec/template/spec/volumes/-
+  value:
+    name: redis-config
+    configMap:
+      name: redis-config
+- op: add
+  path: /spec/template/spec/containers/0/volumeMounts/-
+  value:
+    mountPath: /usr/local/etc/redis
+    name: redis-config
+- op: add
+  path: /spec/template/spec/containers/0/command
+  value:
+    - redis-server
+    - /usr/local/etc/redis/redis.conf
