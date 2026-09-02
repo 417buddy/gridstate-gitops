@@ -13,7 +13,7 @@ configMapGenerator:
     namespace: gridstate
     behavior: merge
     literals:
-      - REGION=region-a
+      - REGION=region-b
 
 patches:
   - path: redis-patch.yaml
