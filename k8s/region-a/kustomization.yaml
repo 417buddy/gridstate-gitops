@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../base
   - redis-pvc.yaml
+  - redis-configmap.yaml
 
 generators:
   - ksops-generator.yaml
