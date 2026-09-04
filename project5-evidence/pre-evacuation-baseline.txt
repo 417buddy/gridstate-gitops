@@ -1,0 +1,46 @@
+===== GRIDSTATE PROJECT 5 PRE-DRILL =====
+Thu Sep  3 12:47:27 UTC 2026
+
+===== GIT =====
+55bf6fa Manage Redis persistence configuration in GitOps
+?? project5-evidence/
+
+===== REGION A DEPLOYMENTS =====
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+gridstate-api      2/2     2            2           10d
+gridstate-worker   2/2     2            2           10d
+redis              1/1     1            1           10d
+
+===== REGION A PODS =====
+NAME                                READY   STATUS    RESTARTS      AGE   IP            NODE                               NOMINATED NODE   READINESS GATES
+gridstate-api-746c97f879-2nm5t      1/1     Running   4 (23h ago)   43h   10.42.1.97    k3d-gridstate-region-a-server-0    <none>           <none>
+gridstate-api-746c97f879-9nqx6      1/1     Running   3 (23h ago)   43h   10.42.2.215   k3d-gridstate-region-a-agent-1     <none>           <none>
+gridstate-worker-759b79dfcf-fpth7   1/1     Running   6 (23h ago)   6d    10.42.2.216   k3d-gridstate-region-a-agent-1     <none>           <none>
+gridstate-worker-759b79dfcf-w7gbn   1/1     Running   0             20h   10.42.5.6     k3d-gridstate-region-a-agent-0-0   <none>           <none>
+redis-666d988d97-9n9cw              1/1     Running   0             18h   10.42.1.105   k3d-gridstate-region-a-server-0    <none>           <none>
+
+===== PVC =====
+NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+redis-data   Bound    pvc-cafc0494-2fce-4f60-816b-f5706c237ca7   1Gi        RWO            local-path     <unset>                 26h
+
+===== ARGO CD =====
+Synced | Healthy | 55bf6fa53d8917222e9204b550c3f2c2b1b79196
+
+===== VELERO =====
+NAME      PROVIDER   BUCKET/PREFIX              PHASE         LAST VALIDATED                  ACCESS MODE   DEFAULT
+default   aws        gridstate-velero-backups   Unavailable   2026-09-03 13:46:16 +0100 WAT   ReadWrite     true
+
+===== NODE AGENTS =====
+NAME               READY   STATUS    RESTARTS   AGE   IP            NODE                               NOMINATED NODE   READINESS GATES
+node-agent-prvr7   1/1     Running   0          21h   10.42.2.218   k3d-gridstate-region-a-agent-1     <none>           <none>
+node-agent-tfdwk   1/1     Running   0          20h   10.42.5.3     k3d-gridstate-region-a-agent-0-0   <none>           <none>
+node-agent-zmfp7   1/1     Running   0          21h   10.42.1.101   k3d-gridstate-region-a-server-0    <none>           <none>
+
+===== REDIS CONFIG =====
+appendonly
+yes
+save
+60 1
+
+===== RPO CHECKPOINT =====
+2026-09-03T12:42:13Z
