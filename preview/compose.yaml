@@ -1,0 +1,37 @@
+services:
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    networks:
+      - gridstate-preview
+
+  api:
+    image: gridstate-api:0.1.0
+    restart: unless-stopped
+    depends_on:
+      - redis
+    environment:
+      NODE_ENV: production
+      REGION: ${PREVIEW_NAME:-gridstate-preview}
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "${PREVIEW_API_PORT:-3000}:3000"
+    networks:
+      - gridstate-preview
+
+  worker:
+    image: gridstate-worker:0.1.0
+    restart: unless-stopped
+    depends_on:
+      - redis
+    environment:
+      NODE_ENV: production
+      REGION: ${PREVIEW_NAME:-gridstate-preview}
+      REDIS_URL: redis://redis:6379
+    networks:
+      - gridstate-preview
+
+networks:
+  gridstate-preview:
+    name: ${PREVIEW_NETWORK:-gridstate-preview}

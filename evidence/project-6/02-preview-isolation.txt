@@ -1,0 +1,52 @@
+=================================================
+ GRIDSTATE PROJECT 6 — PREVIEW #2 ISOLATION
+=================================================
+Mon Sep  7 16:52:44 UTC 2026
+
+===== PREVIEW #1 =====
+NAME                        IMAGE                    COMMAND                  SERVICE   CREATED       STATUS       PORTS
+gridstate-pr-001-api-1      gridstate-api:0.1.0      "docker-entrypoint.s…"   api       2 hours ago   Up 2 hours   0.0.0.0:3101->3000/tcp, [::]:3101->3000/tcp
+gridstate-pr-001-redis-1    redis:7-alpine           "docker-entrypoint.s…"   redis     2 hours ago   Up 2 hours   6379/tcp
+gridstate-pr-001-worker-1   gridstate-worker:0.1.0   "docker-entrypoint.s…"   worker    2 hours ago   Up 2 hours   3001/tcp
+
+===== PREVIEW #2 =====
+NAME                        IMAGE                    COMMAND                  SERVICE   CREATED          STATUS          PORTS
+gridstate-pr-002-api-1      gridstate-api:0.1.0      "docker-entrypoint.s…"   api       22 minutes ago   Up 21 minutes   0.0.0.0:3102->3000/tcp, [::]:3102->3000/tcp
+gridstate-pr-002-redis-1    redis:7-alpine           "docker-entrypoint.s…"   redis     22 minutes ago   Up 22 minutes   6379/tcp
+gridstate-pr-002-worker-1   gridstate-worker:0.1.0   "docker-entrypoint.s…"   worker    22 minutes ago   Up 22 minutes   3001/tcp
+
+===== PREVIEW #1 NETWORK =====
+gridstate-pr-001-api-1 -> 172.18.0.3/16
+gridstate-pr-001-redis-1 -> 172.18.0.2/16
+gridstate-pr-001-worker-1 -> 172.18.0.4/16
+
+
+===== PREVIEW #2 NETWORK =====
+gridstate-pr-002-worker-1 -> 172.19.0.4/16
+gridstate-pr-002-api-1 -> 172.19.0.3/16
+gridstate-pr-002-redis-1 -> 172.19.0.2/16
+
+
+===== PREVIEW #1 STATUS =====
+{"region":"gridstate-pr-001","redis":"connected","queueDepth":0}
+
+===== PREVIEW #2 STATUS =====
+{"region":"gridstate-pr-002","redis":"connected","queueDepth":0}
+
+===== PREVIEW #2 HEALTH =====
+{"status":"ok","region":"gridstate-pr-002"}
+
+===== PREVIEW #2 TEST JOB =====
+{"id":"job_1788798807209_g1bx3y","status":"queued"}
+
+===== PREVIEW #2 TEST JOB RESULT =====
+{"id":"job_1788798807209_g1bx3y","status":"completed","processedAt":"2026-09-07T16:33:27.565Z","region":"gridstate-pr-002"}
+
+===== ALL GRIDSTATE CONTAINERS =====
+NAMES                       IMAGE                    STATUS          PORTS
+gridstate-pr-002-api-1      gridstate-api:0.1.0      Up 22 minutes   0.0.0.0:3102->3000/tcp, [::]:3102->3000/tcp
+gridstate-pr-002-worker-1   gridstate-worker:0.1.0   Up 22 minutes   3001/tcp
+gridstate-pr-002-redis-1    redis:7-alpine           Up 22 minutes   6379/tcp
+gridstate-pr-001-api-1      gridstate-api:0.1.0      Up 2 hours      0.0.0.0:3101->3000/tcp, [::]:3101->3000/tcp
+gridstate-pr-001-worker-1   gridstate-worker:0.1.0   Up 2 hours      3001/tcp
+gridstate-pr-001-redis-1    redis:7-alpine           Up 2 hours      6379/tcp

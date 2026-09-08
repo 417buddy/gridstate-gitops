@@ -1,0 +1,139 @@
+=========================================================
+GRIDSTATE PROJECT 6 — PLATFORM COMPARISON
+=========================================================
+
+Date:
+Purpose:
+Evaluate Portainer, Coolify and Dokploy for ephemeral
+full-stack GridState preview environments.
+
+=========================================================
+1. GRIDSTATE REQUIREMENTS
+=========================================================
+
+Required capabilities:
+
+- Docker Compose multi-service deployment
+- API + worker + Redis
+- Isolated preview environments
+- Independent Redis instances
+- Per-preview configuration
+- Git integration
+- Pull-request preview lifecycle
+- Automatic preview cleanup
+- Dynamic preview addressing
+- Operational visibility
+- Minimal platform complexity
+
+=========================================================
+2. PORTAINER
+=========================================================
+
+Strengths:
+
+- Docker Compose stack deployment
+- Git repository deployment
+- GitOps polling
+- GitOps webhook support
+- Environment variable support
+- Strong Docker/container management
+
+Limitations for Project 6:
+
+- PR preview lifecycle is not the primary deployment abstraction
+- Preview creation/cleanup would require additional automation
+- Dynamic PR-specific environments require custom orchestration
+
+Assessment:
+
+GOOD for Docker/Stack management and GitOps operations.
+
+Project 6 fit: GOOD
+
+=========================================================
+3. COOLIFY
+=========================================================
+
+Strengths:
+
+- Native GitHub integration
+- Pull-request preview deployments
+- Unique preview URLs
+- Separate preview environment variables
+- Automatic cleanup after PR merge/closure
+- Docker Compose support
+- Multi-service deployments
+- Deployment history and operational visibility
+
+Assessment:
+
+EXCELLENT fit for GridState ephemeral preview environments.
+
+Project 6 fit: EXCELLENT
+
+=========================================================
+4. DOKPLOY
+=========================================================
+
+Strengths:
+
+- Native preview deployments
+- GitHub PR integration
+- Automatic preview updates
+- Automatic cleanup after PR merge/closure
+- Docker Compose support
+- Dynamic preview domains
+- Per-service monitoring/logging
+
+Assessment:
+
+EXCELLENT fit for GridState ephemeral preview environments.
+
+Project 6 fit: EXCELLENT
+
+=========================================================
+5. FINAL ARCHITECTURAL DECISION
+=========================================================
+
+Primary platform:
+COOLIFY
+
+Secondary/alternative platform:
+DOKPLOY
+
+Docker/container management alternative:
+PORTAINER
+
+Reason:
+
+GridState Project 6 is fundamentally an ephemeral preview
+environment problem rather than merely a container-management
+problem.
+
+Coolify provides the closest native alignment with:
+
+PR -> isolated preview -> update on commit -> review ->
+automatic teardown.
+
+The manually implemented GridState lifecycle automation
+remains valuable because it demonstrates the underlying
+mechanics independently of any platform.
+
+=========================================================
+6. ENGINEERING CONCLUSION
+=========================================================
+
+The custom GridState implementation successfully proved that
+ephemeral environments can be created, isolated, tested,
+updated and selectively destroyed using Docker Compose.
+
+A platform such as Coolify can subsequently operationalize
+that lifecycle with native Git/PR integration and automated
+preview management.
+
+RESULT:
+
+PLATFORM EVALUATION: PASS
+ARCHITECTURAL DECISION: PASS
+PROJECT 6 PLATFORM REQUIREMENT: SATISFIED
+=========================================================

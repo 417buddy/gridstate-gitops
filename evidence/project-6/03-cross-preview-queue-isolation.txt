@@ -1,0 +1,40 @@
+=================================================
+ GRIDSTATE PROJECT 6 — CROSS-PREVIEW QUEUE ISOLATION
+=================================================
+Mon Sep  7 17:25:11 UTC 2026
+
+===== PREVIEW #1 STATUS =====
+{"region":"gridstate-pr-001","redis":"connected","queueDepth":0}
+
+===== PREVIEW #2 STATUS =====
+{"region":"gridstate-pr-002","redis":"connected","queueDepth":0}
+
+===== PREVIEW #1 VERIFIED JOB =====
+{"id":"job_1788801292990_8tpq76","status":"completed","processedAt":"2026-09-07T17:14:53.170Z","region":"gridstate-pr-001"}
+
+===== PREVIEW #1 CONTAINERS =====
+NAME                        IMAGE                    COMMAND                  SERVICE   CREATED       STATUS       PORTS
+gridstate-pr-001-api-1      gridstate-api:0.1.0      "docker-entrypoint.s…"   api       3 hours ago   Up 3 hours   0.0.0.0:3101->3000/tcp, [::]:3101->3000/tcp
+gridstate-pr-001-redis-1    redis:7-alpine           "docker-entrypoint.s…"   redis     3 hours ago   Up 3 hours   6379/tcp
+gridstate-pr-001-worker-1   gridstate-worker:0.1.0   "docker-entrypoint.s…"   worker    3 hours ago   Up 3 hours   3001/tcp
+
+===== PREVIEW #2 CONTAINERS =====
+NAME                        IMAGE                    COMMAND                  SERVICE   CREATED          STATUS          PORTS
+gridstate-pr-002-api-1      gridstate-api:0.1.0      "docker-entrypoint.s…"   api       54 minutes ago   Up 54 minutes   0.0.0.0:3102->3000/tcp, [::]:3102->3000/tcp
+gridstate-pr-002-redis-1    redis:7-alpine           "docker-entrypoint.s…"   redis     54 minutes ago   Up 54 minutes   6379/tcp
+gridstate-pr-002-worker-1   gridstate-worker:0.1.0   "docker-entrypoint.s…"   worker    54 minutes ago   Up 54 minutes   3001/tcp
+
+===== PREVIEW #1 NETWORK =====
+gridstate-pr-001-api-1 -> 172.18.0.3/16
+gridstate-pr-001-redis-1 -> 172.18.0.2/16
+gridstate-pr-001-worker-1 -> 172.18.0.4/16
+
+
+===== PREVIEW #2 NETWORK =====
+gridstate-pr-002-worker-1 -> 172.19.0.4/16
+gridstate-pr-002-api-1 -> 172.19.0.3/16
+gridstate-pr-002-redis-1 -> 172.19.0.2/16
+
+
+===== RESULT =====
+PASS — Preview #1 and Preview #2 operate as isolated full-stack environments.
